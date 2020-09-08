@@ -20,19 +20,20 @@ int		get_next_line(int fd, char **line)
 			free(save[fd]);
 		save[fd] = temp;
 	}
-	if((int)save[fd]  < 0)
+	if(nbr_bytes < 0)
 		return (ERROR);
 	if(search_nl != 0)
 	{
-		*line = (strndup(save[fd], search_nl - save[fd]));
+		*line = (strndup(save[fd], search_nl - save[fd] ));
 		temp = strndup(search_nl + 1, strlen(search_nl + 1));
 		free(save[fd]);
 		save[fd] = temp;
 		return LINE_READ;
 	}
-	if(save != 0)
+	if(*save != 0)
 	{
 		*line = *save;
+		free(save[fd]);
 		save[fd] = 0;
 	}
 	else

@@ -12,10 +12,11 @@ int	main(void)
 	fd = open("text.txt", O_RDONLY);
 	while((rtn = (get_next_line(fd, &line) == 1)))
 	{
-		printf("\nline =%s]\n", line);
-		printf("return =%d]\n",rtn);
+		printf("%s", line);
+//		printf("return =%d]\n",rtn);
+		free(line);
 	}
-	printf("rtn =%d\n", rtn);
+//	printf("rtn =%d\n", rtn);
 	free(line);
 	close(fd);
 
